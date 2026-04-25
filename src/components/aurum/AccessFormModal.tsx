@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, ArrowRight } from "lucide-react";
 import GoldButton from "./GoldButton";
 
@@ -37,7 +37,19 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [step, setStep] = useState(0);
-  const [form, setForm] = useState<FormState>(initialState);
+
+  // Auto-fill founding member intent when form type is founding
+  const foundingMemberIntent = "I am applying for a founding member seat to help establish world peace government and build a legacy for social cause through royal connections, real asset gold, and independent power.";
+
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    email: "",
+    country: "",
+    city: "",
+    number: "",
+    social: "",
+    intent: formType === "founding" ? foundingMemberIntent : "",
+  });
 
   const steps = [
     { title: "Identity", fields: ["name", "email"] as (keyof FormState)[] },
@@ -48,6 +60,21 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
 
   const totalSteps = steps.length;
   const progress = ((step + 1) / totalSteps) * 100;
+
+  // Auto-fill founding member intent when modal opens
+  useEffect(() => {
+    if (isOpen && formType === "founding") {
+      setForm(prev => ({
+        ...prev,
+        intent: foundingMemberIntent
+      }));
+    } else if (isOpen && formType === "access") {
+      setForm(prev => ({
+        ...prev,
+        intent: ""
+      }));
+    }
+  }, [isOpen, formType]);
 
   const update = (key: keyof FormState, value: string) =>
     setForm((f) => ({ ...f, [key]: value }));
@@ -277,17 +304,13 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
                       Statement of Intent
                     </label>
                     
-                    {/* Founding Member Prefill Option */}
+                    {/* Auto-filled indicator for founding members */}
                     {formType === "founding" && (
                       <div className="mb-4 p-3 border border-gold/20 bg-gold/5 rounded">
-                        <button
-                          type="button"
-                          onClick={() => update("intent", "I am applying for a founding member seat to help establish world peace government and build a legacy for social cause through royal connections, real asset gold, and independent power.")}
-                          className="w-full text-left text-sm text-gold/80 hover:text-gold transition-colors"
-                        >
+                        <p className="text-sm text-gold/80">
                           <span className="text-[10px] uppercase tracking-[0.2em]">👑 Founding Member:</span> 
-                          <span className="ml-2">I am applying for a founding member seat to help establish world peace government and build a legacy for social cause through royal connections, real asset gold, and independent power.</span>
-                        </button>
+                          <span className="ml-2">Intent auto-filled for founding member application</span>
+                        </p>
                       </div>
                     )}
                     
@@ -297,6 +320,11 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
                       required
                       value={form.intent}
                       onChange={(e) => update("intent", e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                        }
+                      }}
                       placeholder={
                         formType === "founding"
                           ? "We are on a journey to make world peace government, and establish foundation like never exist. If you want to build a legacy for social cause then become a founding member. We silently focus on royal connection, real asset gold, and independent power."
@@ -393,6 +421,11 @@ function FormField({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+          }
+        }}
         className="w-full border border-gold/20 bg-background/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 transition-all duration-300 focus:border-gold focus:outline-none focus:shadow-[0_0_0_1px_hsl(43_70%_55%/0.4)]"
       />
     </div>
