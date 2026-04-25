@@ -69,8 +69,29 @@ function doPost(e) {
 ### 3. Vercel Deployment
 1. Push your code to GitHub
 2. Import your repository to Vercel
-3. Go to **Settings** → **Environment Variables**
-4. Add the environment variables above
+3. During import or after deployment:
+   - Go to **Settings** → **Environment Variables**
+   - Click "Add New"
+   - Add each environment variable below:
+   
+   **Required Variables:**
+   - Name: `VITE_GOOGLE_APPS_SCRIPT_URL`
+     Value: `https://script.google.com/macros/s/AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q/exec`
+     Environment: Production, Preview, Development
+   
+   - Name: `VITE_GOOGLE_APPS_SCRIPT_ID`
+     Value: `AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q`
+     Environment: Production, Preview, Development
+   
+   - Name: `VITE_GOOGLE_SHEET_ID` (Optional)
+     Value: `your_google_sheet_id_here`
+     Environment: Production, Preview, Development
+   
+   - Name: `VITE_ADMIN_EMAIL` (Optional)
+     Value: `admin@brasetz.com`
+     Environment: Production, Preview, Development
+
+4. Click "Save" then "Redeploy" to apply changes
 5. Deploy
 
 ### 4. Local Development
