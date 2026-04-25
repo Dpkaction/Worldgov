@@ -2,8 +2,8 @@ import { useState } from "react";
 import { X, ArrowRight } from "lucide-react";
 import GoldButton from "./GoldButton";
 
-// 🔗 Replace with your deployed Google Apps Script Web App URL
-const APPS_SCRIPT_URL =
+// 🔗 Google Apps Script Web App URL from environment variables
+const APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || 
   "https://script.google.com/macros/s/AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q/exec";
 
 type FormState = {
