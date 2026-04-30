@@ -1,0 +1,15 @@
+# Google Apps Script Configuration
+# Copy this content to .env.local for local development
+# Add these to your Vercel Environment Variables
+
+# Google Apps Script Web App URL
+VITE_GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q/exec
+
+# Google Apps Script ID (for reference)
+VITE_GOOGLE_APPS_SCRIPT_ID=AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q
+
+# Optional: Google Sheet ID (if you want to specify a specific sheet)
+VITE_GOOGLE_SHEET_ID=your_google_sheet_id_here
+
+# Optional: Admin email for notifications
+VITE_ADMIN_EMAIL=admin@brasetz.com
