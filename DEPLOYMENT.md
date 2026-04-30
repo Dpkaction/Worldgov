@@ -83,60 +83,74 @@ function doPost(e) {
    - Override specific values if needed
 
 ### 4. Vercel Deployment
-1. Push your code to GitHub
-2. Import your repository to Vercel
-3. During import or after deployment:
+
+#### ✅ Pre-Deployment Checklist:
+- [ ] `.env` file exists locally with all variables
+- [ ] Code pushed to GitHub
+- [ ] Google Apps Script deployed as Web App
+- [ ] All recent commits pushed to main branch
+
+#### 🚀 Deployment Steps:
+1. **Import to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Click **"New Project"**
+   - Import your GitHub repository: `Dpkaction/Worldgov`
+
+2. **Configure Build:**
+   - Framework: **Vite** (auto-detected)
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+
+3. **Add Environment Variables:**
    - Go to **Settings** → **Environment Variables**
-   - Click "Add New"
-   - Add each environment variable below:
-   
+   - Click **"Add New"** for each variable:
+
    **Required Variables:**
-   - Name: `VITE_GOOGLE_APPS_SCRIPT_URL`
-     Value: `https://script.google.com/macros/s/AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q/exec`
-     Environment: Production, Preview, Development
-   
-   - Name: `VITE_GOOGLE_APPS_SCRIPT_ID`
-     Value: `AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q`
-     Environment: Production, Preview, Development
-   
-   - Name: `VITE_GOOGLE_SHEET_ID` (Optional)
-     Value: `your_google_sheet_id_here`
-     Environment: Production, Preview, Development
-   
-   - Name: `VITE_ADMIN_EMAIL` (Optional)
-     Value: `admin@brasetz.com`
-     Environment: Production, Preview, Development
+   ```
+   Name: VITE_GOOGLE_APPS_SCRIPT_URL
+   Value: https://script.google.com/macros/s/AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q/exec
+   Environment: Production, Preview, Development
 
-4. Click "Save" then "Redeploy" to apply changes
-5. Deploy
+   Name: VITE_GOOGLE_APPS_SCRIPT_ID
+   Value: AKfycbz3yvN7WfSq4FUD6zUA9ss9TzwUhBHF4iGEeuiuR1kh39GaZ5Tf9twWps45D38qUUyX1Q
+   Environment: Production, Preview, Development
 
-### 4. Local Development
-Create a `.env.local` file:
-```env
-VITE_GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
-VITE_GOOGLE_APPS_SCRIPT_ID=YOUR_SCRIPT_ID
-VITE_GOOGLE_SHEET_ID=YOUR_SHEET_ID
-VITE_ADMIN_EMAIL=admin@brasetz.com
-```
+   Name: VITE_ADMIN_EMAIL
+   Value: admin@brasetz.com
+   Environment: Production, Preview, Development
+   ```
 
-## Troubleshooting:
+4. **Deploy:**
+   - Click **"Deploy"**
+   - Wait for build to complete
+   - Test form submissions on live site
 
-### CORS Issues
-- Make sure your Google Apps Script is deployed as a Web App
-- Set "Who has access" to "Anyone"
-- Use `mode: "no-cors"` in fetch requests
+#### 🔧 Troubleshooting:
+- **"Secret does not exist"**: Add environment variables in Vercel dashboard
+- **Build fails**: Check for CSS errors or missing dependencies  
+- **Forms not working**: Verify VITE_GOOGLE_APPS_SCRIPT_URL is correct
+- **Analytics not tracking**: Check environment variables are set correctly
 
-### Form Not Submitting
-- Check that the environment variables are set correctly in Vercel
-- Verify the Google Apps Script URL is accessible
-- Check the Google Sheet permissions
+#### 🎯 Success Indicators:
+✅ Build completes without errors
+✅ Site loads with all styling and animations
+✅ Forms submit successfully to Google Apps Script
+✅ Analytics tracking is active (Google + Vercel)
+✅ All buttons and interactions work properly
 
-### Missing Environment Variables
-- Ensure all variables are added to Vercel Environment Variables
-- Check that variable names match exactly (case-sensitive)
-- Restart the Vercel deployment after adding variables
+---
 
-## Security Notes:
+## 🚀 Ready for Deployment!
+
+Your Brasetz gold banking website is now fully configured for Vercel deployment with:
+- ✅ Environment variables ready
+- ✅ Build configuration optimized
+- ✅ Analytics integrated
+- ✅ Forms connected to Google Apps Script
+- ✅ Complete deployment guide
+
+**Deploy now and start accepting premium membership applications!** 🎉
 - Never commit `.env.local` to version control
 - Use Vercel's environment variables for production
 - Regularly rotate your Google Apps Script deployment
