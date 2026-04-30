@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const ITEMS = [
-  { label: "1 BRASETZ", value: "12.00 g" },
+  { label: "1 BRASETZ", value: "2.05 g" },
+  { label: "BRASETZ TOTAL COLLECTION", value: "201 g" },
   { label: "RESERVE STATUS", value: "FULLY BACKED" },
   { label: "ECOSYSTEM", value: "INVITE-ONLY" },
   { label: "STANDARD", value: "GOLD / GRAM" },
@@ -10,7 +11,7 @@ const ITEMS = [
 ];
 
 export const PriceTicker = () => {
-  const [tick, setTick] = useState(12.0);
+  const [tick, setTick] = useState(2.05);
   const dirRef = useRef(1);
 
   useEffect(() => {
@@ -18,8 +19,8 @@ export const PriceTicker = () => {
       setTick((v) => {
         const delta = (Math.random() * 0.02) * dirRef.current;
         const next = +(v + delta).toFixed(3);
-        if (next > 12.05) dirRef.current = -1;
-        if (next < 11.95) dirRef.current = 1;
+        if (next > 2.10) dirRef.current = -1;
+        if (next < 2.00) dirRef.current = 1;
         return next;
       });
     }, 2200);

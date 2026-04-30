@@ -39,7 +39,7 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
   const [step, setStep] = useState(0);
 
   // Auto-fill founding member intent when form type is founding
-  const foundingMemberIntent = "I am applying for a founding member seat to help establish world peace government and build a legacy for social cause through royal connections, real asset gold, and independent power.";
+  const volunteerMemberIntent = "I am applying for a volunteer member seat to help establish world peace government and build a legacy for social cause through royal connections, real asset gold, and independent power.";
 
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -48,7 +48,7 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
     city: "",
     number: "",
     social: "",
-    intent: formType === "founding" ? foundingMemberIntent : "",
+    intent: formType === "founding" ? volunteerMemberIntent : "",
   });
 
   const steps = [
@@ -66,7 +66,7 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
     if (isOpen && formType === "founding") {
       setForm(prev => ({
         ...prev,
-        intent: foundingMemberIntent
+        intent: volunteerMemberIntent
       }));
     } else if (isOpen && formType === "access") {
       setForm(prev => ({
@@ -179,15 +179,15 @@ export const AccessFormModal = ({ isOpen, onClose, formType }: AccessFormModalPr
           {/* Header */}
           <div className="text-center mb-8">
             <p className="text-xs uppercase tracking-[0.4em] text-gold/80">
-              — {formType === "founding" ? "Founding Member" : "Private Access"} —
+              — {formType === "founding" ? "Volunteer Member" : "Private Access"} —
             </p>
             <h2 className="mt-4 font-serif text-3xl md:text-4xl gradient-gold-text">
-              {formType === "founding" ? "Become a Founding Member" : "Request Private Access"}
+              {formType === "founding" ? "Become a Volunteer Member" : "Request Private membership access"}
             </h2>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
               {formType === "founding" 
-                ? "Join the elite circle of founding members who shape the future of gold-backed finance."
-                : "Apply for exclusive access to the royal gold banking ecosystem."
+                ? "Join the dedicated circle of volunteer members who help build the future of gold-backed finance."
+                : "Apply for private membership access to the royal gold banking ecosystem."
               }
             </p>
           </div>

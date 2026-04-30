@@ -245,7 +245,7 @@ export const CinematicScroll = ({ onAccessClick, onFoundingClick }: CinematicScr
                     className="px-8 py-4 text-lg drop-shadow-[0_0_15px_rgba(251,191,36,0.6)]"
                     onClick={onAccessClick}
                   >
-                    Request Private Access <ArrowRight size={16} />
+                    Request Private membership access <ArrowRight size={16} />
                   </GoldButton>
                   <GoldButton 
                     variant="outline" 

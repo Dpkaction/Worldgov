@@ -77,10 +77,10 @@ const Index = () => {
           <Reveal delay={600}>
             <div className="mt-12 flex flex-wrap items-center gap-4">
               <GoldButton variant="solid" onClick={() => setAccessModalOpen(true)}>
-                Request Private Access <ArrowRight size={14} />
+                Request Private membership access <ArrowRight size={14} />
               </GoldButton>
               <GoldButton variant="outline" onClick={() => setFoundingModalOpen(true)}>
-                Become a Founding Member
+                Become a Volunteer Member
               </GoldButton>
             </div>
           </Reveal>
@@ -110,13 +110,19 @@ const Index = () => {
             </div>
           </Reveal>
 
+          <Reveal delay={1050}>
+            <p className="mt-6 text-center max-w-2xl mx-auto text-sm text-gold/80 leading-relaxed font-light">
+              Become a volunteer—gain access to the top 9%, enter a network of sharp, independent thinkers, and move with those shaping their own reality.
+            </p>
+          </Reveal>
+
           {/* Full Width Royal Stats */}
           <Reveal delay={750}>
             <div className="mt-20 w-screen -mx-6 md:-mx-8 lg:-mx-12">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-gradient-to-r from-gold/30 via-gold/20 to-gold/30 border-y border-gold">
                 {[
                   { k: "Standard", v: "Gold / Gram" },
-                  { k: "1 Brasetz", v: "12.00 g" },
+                  { k: "Brasetz collection", v: "201 gram" },
                   { k: "Custody", v: "Physical" },
                   { k: "Royalty", v: "Lifetime" },
                 ].map((s, i) => (
