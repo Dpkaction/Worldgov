@@ -67,9 +67,9 @@ function doPost(e) {
 7. Deploy and copy the Script ID from the URL
 
 ### 3. Local Development Setup
-1. Create `.env.local` file in your project root:
-   - Copy content from `env-content.txt`
-   - Rename `env-content.txt` to `.env.local`
+1. ✅ `.env` file is already created in project root:
+   - Contains all required environment variables
+   - Ready for local development
    - This file is ignored by git for security
 
 2. Test locally:
@@ -77,6 +77,10 @@ function doPost(e) {
    npm run dev
    ```
    - Verify forms work with environment variables
+
+3. For additional local development, create `.env.local`:
+   - Copy content from `.env` file
+   - Override specific values if needed
 
 ### 4. Vercel Deployment
 1. Push your code to GitHub
